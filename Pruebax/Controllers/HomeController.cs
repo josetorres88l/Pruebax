@@ -5,14 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pruebax.Models;
+using Pruebax.Services;
 
 namespace Pruebax.Controllers
 {
     public class HomeController : Controller
     {
+        public IMascotaRepositorio Repositorio { get;}
+        public HomeController(IMascotaRepositorio repositorio)
+        {
+            Repositorio = repositorio;
+        }
         public IActionResult Index()
         {
-            return View();
+            var Perros = Repositorio.ObtenerTodos();
+            return View(Perros);
+
         }
 
         public IActionResult About()

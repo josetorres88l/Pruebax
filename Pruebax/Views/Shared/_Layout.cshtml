@@ -33,6 +33,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Mascotas" asp-action="Index">Mascotas</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -42,6 +43,9 @@
         @RenderBody()
         <hr />
         <footer>
+            <vc:mascotas></vc:mascotas>
+            @*@await Component.InvokeAsync("Mascotas")*@
+
             <p>&copy; 2018 - Pruebax</p>
         </footer>
     </div>

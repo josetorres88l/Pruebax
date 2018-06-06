@@ -34,8 +34,9 @@ namespace Pruebax
                 .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
-
+            services.AddTransient<IEmailSender, EmailSender>();//se va a crear cada vez que se pida
+            services.AddScoped<IMascotaRepositorio, MascotaRepositorioEF>();//se va a crear por cada peticcion http y funciona con el EF
+           // services.AddScoped<IMascotaRepositorio, MascotaRepositorio>();//se va a crear por cada peticcion http y funciona con el EF
             services.AddMvc();
         }
 

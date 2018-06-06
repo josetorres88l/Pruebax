@@ -1,7 +1,28 @@
-﻿@{
+﻿@model List<Mascota>
+@{
     ViewData["Title"] = "Home Page";
 }
 
+@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment env
+<p>@env.EnvironmentName</p>
+
+<environment include="Development">
+    <p>Estamos en Desarrollo</p>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+<environment exclude="Development">
+    <p>Estamos en otro Ambiente</p>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</environment>
+<ul>
+    @foreach (var perro in Model)
+    {
+        <li>@perro.Nombre</li>}
+</ul>
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
